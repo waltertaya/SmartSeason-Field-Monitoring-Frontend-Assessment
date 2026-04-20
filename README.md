@@ -1,56 +1,16 @@
-# SmartSeason Field Monitoring System — Frontend
+# React + Vite
 
-React frontend for the SmartSeason Field Monitoring System, built with **Vite + React + Tailwind CSS**.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Setup
+Currently, two official plugins are available:
 
-### Prerequisites
-- Node.js 18+
-- Backend API running at `http://localhost:8000` (see backend README)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-### Steps
+## React Compiler
 
-```bash
-# 1. Install dependencies
-npm install
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-# 2. Start the dev server
-npm run dev
-```
+## Expanding the ESLint configuration
 
-The app will be available at `http://localhost:5173`.
-
-> The Vite dev server proxies all `/api/*` requests to `http://localhost:8000`, so no CORS issues in development.
-
-## Features
-
-### Admin
-- Dashboard with total fields, status breakdown (active/at risk/completed), stage breakdown, and recent updates feed
-- Full field list with search and stage filter
-- Create / edit / delete fields
-- Assign fields to field agents
-- View all field update history
-
-### Field Agent
-- Dashboard showing only assigned fields and their stats
-- View assigned fields and their details
-- Log field updates (stage + notes)
-- View own update history per field
-
-## Tech Stack
-
-- **Vite + React 19** — fast dev experience
-- **React Router v6** — client-side routing
-- **Axios** — API client with JWT interceptors (auto-refresh on 401)
-- **Tailwind CSS v4** — utility-first styling
-- **Context API** — lightweight auth state management
-
-## Project Structure
-
-```
-src/
-  api/          # axios instance + API call functions
-  context/      # AuthContext (user state, login/logout)
-  components/   # Navbar, Layout, ProtectedRoute, badges
-  pages/        # Login, Dashboard, Fields, FieldDetail
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
