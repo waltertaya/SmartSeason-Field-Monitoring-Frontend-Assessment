@@ -92,12 +92,6 @@ export default function Login() {
               )}
             </button>
           </form>
-
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg text-sm text-gray-500">
-            <p className="font-medium text-gray-600 mb-1">Demo credentials:</p>
-            <p>Admin: <code className="bg-gray-200 px-1 rounded">admin</code> / <code className="bg-gray-200 px-1 rounded">admin1234</code></p>
-            <p>Agent: <code className="bg-gray-200 px-1 rounded">agent1</code> / <code className="bg-gray-200 px-1 rounded">agent1234</code></p>
-          </div>
         </div>
       </div>
     </div>
