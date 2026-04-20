@@ -1,13 +1,13 @@
 const STATUS_STYLES = {
-  active:    'bg-green-100 text-green-700',
-  at_risk:   'bg-red-100 text-red-700',
+  active: 'bg-green-100 text-green-700',
+  at_risk: 'bg-red-100 text-red-700',
   completed: 'bg-gray-100 text-gray-600',
 }
 
 const STAGE_STYLES = {
-  planted:   'bg-yellow-100 text-yellow-700',
-  growing:   'bg-blue-100 text-blue-700',
-  ready:     'bg-green-100 text-green-700',
+  planted: 'bg-yellow-100 text-yellow-700',
+  growing: 'bg-blue-100 text-blue-700',
+  ready: 'bg-green-100 text-green-700',
   harvested: 'bg-gray-100 text-gray-600',
 }
 
