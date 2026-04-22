@@ -48,63 +48,65 @@ function FieldModal({ field, agents, onClose, onSaved }) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md">
-        <div className="flex items-center justify-between p-6 border-b">
-          <h2 className="text-lg font-semibold text-gray-800">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+      <div className="w-full max-w-md rounded-2xl bg-slate-900 shadow-2xl ring-1 ring-slate-700">
+        <div className="flex items-center justify-between border-b border-slate-800 p-6">
+          <h2 className="text-lg font-semibold text-slate-100">
             {field ? 'Edit Field' : 'Create New Field'}
           </h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl leading-none">&times;</button>
+          <button onClick={onClose} className="text-2xl leading-none text-slate-400 hover:text-slate-200" aria-label="Close">
+            &times;
+          </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           {error && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">{error}</div>
+            <div className="rounded-lg border border-rose-500/40 bg-rose-500/10 p-3 text-sm text-rose-300">{error}</div>
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Field Name</label>
+            <label className="mb-1 block text-sm font-medium text-slate-300">Field Name</label>
             <input
               name="name"
               value={form.name}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               placeholder="e.g. North Field A"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Crop Type</label>
+            <label className="mb-1 block text-sm font-medium text-slate-300">Crop Type</label>
             <input
               name="crop_type"
               value={form.crop_type}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               placeholder="e.g. Maize, Wheat, Tomato"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Planting Date</label>
+            <label className="mb-1 block text-sm font-medium text-slate-300">Planting Date</label>
             <input
               type="date"
               name="planting_date"
               value={form.planting_date}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Stage</label>
+            <label className="mb-1 block text-sm font-medium text-slate-300">Stage</label>
             <select
               name="stage"
               value={form.stage}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             >
               {STAGES.map((s) => (
                 <option key={s} value={s} className="capitalize">{s.charAt(0).toUpperCase() + s.slice(1)}</option>
@@ -113,12 +115,12 @@ function FieldModal({ field, agents, onClose, onSaved }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Assign Agent</label>
+            <label className="mb-1 block text-sm font-medium text-slate-300">Assign Agent</label>
             <select
               name="assigned_agent_id"
               value={form.assigned_agent_id}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             >
               <option value="">— Unassigned —</option>
               {agents.map((a) => (
@@ -131,14 +133,14 @@ function FieldModal({ field, agents, onClose, onSaved }) {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex-1 rounded-lg border border-slate-600 px-4 py-2 text-sm font-medium text-slate-200 transition-colors hover:bg-slate-800"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-400 disabled:bg-emerald-500/60"
             >
               {saving ? (
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -189,90 +191,97 @@ export default function Fields() {
   return (
     <Layout>
       <div className="space-y-5">
-        {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Fields</h1>
-            <p className="text-gray-500 text-sm mt-0.5">{fields.length} total fields</p>
+            <h1 className="text-2xl font-bold text-slate-100">Fields</h1>
+            <p className="mt-0.5 text-sm text-slate-300">
+              {isAdmin ? 'Manage fields across your team' : 'View your assigned fields'}
+            </p>
           </div>
           {isAdmin && (
             <button
               onClick={() => setModal('create')}
-              className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+              className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-400"
             >
               <span className="text-lg leading-none">+</span> New Field
             </button>
           )}
         </div>
 
-        {/* Filters */}
-        <div className="flex gap-3 flex-wrap">
-          <input
-            type="text"
-            placeholder="Search by name or crop..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500 w-64"
-          />
-          <select
-            value={stageFilter}
-            onChange={(e) => setStageFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          >
-            <option value="">All Stages</option>
-            {STAGES.map((s) => (
-              <option key={s} value={s} className="capitalize">{s.charAt(0).toUpperCase() + s.slice(1)}</option>
-            ))}
-          </select>
+        <div className="rounded-2xl bg-slate-900/90 p-4 shadow-sm ring-1 ring-slate-800">
+          <div className="flex flex-wrap items-center gap-3">
+            <input
+              type="text"
+              placeholder="Search by name or crop…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 sm:w-72"
+            />
+            <select
+              value={stageFilter}
+              onChange={(e) => setStageFilter(e.target.value)}
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 sm:w-56"
+            >
+              <option value="">All Stages</option>
+              {STAGES.map((s) => (
+                <option key={s} value={s} className="capitalize">{s.charAt(0).toUpperCase() + s.slice(1)}</option>
+              ))}
+            </select>
+            <div className="ml-auto text-sm text-slate-400">
+              <span className="font-medium text-slate-100">{filtered.length}</span> results
+            </div>
+          </div>
         </div>
 
         {/* Table */}
         {loading ? (
           <div className="flex items-center justify-center h-48">
-            <div className="w-8 h-8 border-4 border-green-600 border-t-transparent rounded-full animate-spin" />
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent" />
           </div>
         ) : filtered.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-xl border border-dashed border-gray-300">
-            <p className="text-4xl mb-3">🌾</p>
-            <p className="text-gray-500">No fields found</p>
+          <div className="rounded-2xl border border-dashed border-slate-700 bg-slate-900/90 py-16 text-center">
+            <p className="mb-3 text-4xl">🌾</p>
+            <p className="text-slate-200">No fields found</p>
+            <p className="mt-1 text-sm text-slate-400">Try clearing filters or adjusting your search.</p>
           </div>
         ) : (
-          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-gray-50 border-b border-gray-200">
+          <div className="overflow-hidden rounded-2xl bg-slate-900/90 shadow-sm ring-1 ring-slate-800">
+            <div className="overflow-x-auto">
+              <table className="min-w-[860px] w-full text-sm">
+                <thead className="bg-slate-900 border-b border-slate-800">
                 <tr>
-                  <th className="text-left px-4 py-3 font-semibold text-gray-600">Field</th>
-                  <th className="text-left px-4 py-3 font-semibold text-gray-600">Crop</th>
-                  <th className="text-left px-4 py-3 font-semibold text-gray-600">Planted</th>
-                  <th className="text-left px-4 py-3 font-semibold text-gray-600">Stage</th>
-                  <th className="text-left px-4 py-3 font-semibold text-gray-600">Status</th>
-                  <th className="text-left px-4 py-3 font-semibold text-gray-600">Agent</th>
+                  <th className="text-left px-4 py-3 font-semibold text-slate-300">Field</th>
+                  <th className="text-left px-4 py-3 font-semibold text-slate-300">Crop</th>
+                  <th className="text-left px-4 py-3 font-semibold text-slate-300">Planted</th>
+                  <th className="text-left px-4 py-3 font-semibold text-slate-300">Stage</th>
+                  <th className="text-left px-4 py-3 font-semibold text-slate-300">Status</th>
+                  <th className="text-left px-4 py-3 font-semibold text-slate-300">Agent</th>
                   <th className="px-4 py-3" />
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="divide-y divide-slate-800">
                 {filtered.map((field) => (
-                  <tr key={field.id} className="hover:bg-gray-50 transition-colors">
+                  <tr key={field.id} className="hover:bg-slate-800/50 transition-colors">
                     <td className="px-4 py-3">
                       <Link
                         to={`/fields/${field.id}`}
-                        className="font-medium text-gray-800 hover:text-green-600"
+                        className="font-semibold text-slate-100 hover:text-emerald-300"
                       >
                         {field.name}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-gray-600">{field.crop_type}</td>
-                    <td className="px-4 py-3 text-gray-500">{field.planting_date}</td>
+                    <td className="px-4 py-3 text-slate-300">{field.crop_type}</td>
+                    <td className="px-4 py-3 text-slate-400">{field.planting_date}</td>
                     <td className="px-4 py-3"><StageBadge stage={field.stage} /></td>
                     <td className="px-4 py-3"><StatusBadge status={field.computed_status} /></td>
-                    <td className="px-4 py-3 text-gray-500">
-                      {field.assigned_agent?.username || <span className="text-gray-300">—</span>}
+                    <td className="px-4 py-3 text-slate-400">
+                      {field.assigned_agent?.username || <span className="text-slate-600">—</span>}
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2 justify-end">
                         <Link
                           to={`/fields/${field.id}`}
-                          className="text-blue-500 hover:text-blue-700 text-xs font-medium"
+                          className="text-xs font-semibold text-emerald-300 hover:text-emerald-200"
                         >
                           View
                         </Link>
@@ -280,13 +289,13 @@ export default function Fields() {
                           <>
                             <button
                               onClick={() => setModal(field)}
-                              className="text-gray-500 hover:text-gray-700 text-xs font-medium"
+                              className="text-xs font-semibold text-slate-300 hover:text-slate-100"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => setDeleteConfirm(field)}
-                              className="text-red-400 hover:text-red-600 text-xs font-medium"
+                              className="text-xs font-semibold text-rose-600 hover:text-rose-800"
                             >
                               Delete
                             </button>
@@ -298,6 +307,7 @@ export default function Fields() {
                 ))}
               </tbody>
             </table>
+            </div>
           </div>
         )}
       </div>
@@ -314,22 +324,22 @@ export default function Fields() {
 
       {/* Delete Confirm */}
       {deleteConfirm && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">Delete Field</h3>
-            <p className="text-gray-500 text-sm mb-5">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-sm rounded-2xl bg-slate-900 p-6 shadow-2xl ring-1 ring-slate-700">
+            <h3 className="mb-2 text-lg font-semibold text-slate-100">Delete Field</h3>
+            <p className="mb-5 text-sm text-slate-300">
               Are you sure you want to delete <strong>{deleteConfirm.name}</strong>? This cannot be undone.
             </p>
             <div className="flex gap-3">
               <button
                 onClick={() => setDeleteConfirm(null)}
-                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
+                className="flex-1 rounded-lg border border-slate-600 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800"
               >
                 Cancel
               </button>
               <button
                 onClick={() => handleDelete(deleteConfirm.id)}
-                className="flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg"
+                className="flex-1 rounded-lg bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700"
               >
                 Delete
               </button>

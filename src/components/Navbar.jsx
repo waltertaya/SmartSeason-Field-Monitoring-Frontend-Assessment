@@ -13,37 +13,37 @@ export default function Navbar() {
 
   const isActive = (path) =>
     location.pathname === path
-      ? 'text-green-600 font-semibold border-b-2 border-green-600'
-      : 'text-gray-600 hover:text-gray-900'
+      ? 'bg-emerald-500/15 text-emerald-300 font-semibold'
+      : 'text-slate-300 hover:text-slate-100 hover:bg-slate-800'
 
   return (
-    <nav className="bg-white border-b border-gray-200 shadow-sm">
-      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
-        <Link to="/dashboard" className="flex items-center gap-2 font-bold text-green-700 text-lg">
-          <span className="text-2xl">🌱</span>
+    <nav className="sticky top-0 z-30 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Link to="/dashboard" className="flex items-center gap-2 text-lg font-bold text-emerald-300">
+          <span className="text-xl">🌱</span>
           SmartSeason
         </Link>
 
-        <div className="flex items-center gap-6">
-          <Link to="/dashboard" className={`text-sm pb-1 ${isActive('/dashboard')}`}>
+        <div className="hidden items-center gap-2 sm:flex">
+          <Link to="/dashboard" className={`rounded-lg px-3 py-1.5 text-sm transition ${isActive('/dashboard')}`}>
             Dashboard
           </Link>
-          <Link to="/fields" className={`text-sm pb-1 ${isActive('/fields')}`}>
+          <Link to="/fields" className={`rounded-lg px-3 py-1.5 text-sm transition ${isActive('/fields')}`}>
             Fields
           </Link>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <div className="text-right hidden sm:block">
-            <p className="text-sm font-medium text-gray-800">{user?.username}</p>
-            <p className="text-xs text-gray-500 capitalize">{user?.role === 'admin' ? 'Admin' : 'Field Agent'}</p>
+            <p className="text-sm font-medium text-slate-100">{user?.username}</p>
+            <p className="text-xs capitalize text-slate-400">{user?.role === 'admin' ? 'Admin' : 'Field Agent'}</p>
           </div>
-          <span className={`text-xs px-2 py-1 rounded-full font-medium ${user?.role === 'admin' ? 'bg-purple-100 text-purple-700' : 'bg-green-100 text-green-700'}`}>
+          <span className={`rounded-full px-2 py-1 text-xs font-medium ${user?.role === 'admin' ? 'bg-violet-500/15 text-violet-300 ring-1 ring-violet-500/40' : 'bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/40'}`}>
             {user?.role === 'admin' ? 'Admin' : 'Agent'}
           </span>
           <button
             onClick={handleLogout}
-            className="text-sm text-red-500 hover:text-red-700 border border-red-200 hover:border-red-400 px-3 py-1.5 rounded-lg transition-colors"
+            className="rounded-lg border border-rose-500/40 px-3 py-1.5 text-sm text-rose-300 transition-colors hover:border-rose-400 hover:bg-rose-500/15 hover:text-rose-200"
           >
             Logout
           </button>
